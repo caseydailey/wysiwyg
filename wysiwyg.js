@@ -85,6 +85,7 @@ function activateCard (e) {
 		cardsArray.forEach((card) => card.classList.remove("active"));
 		e.target.parentNode.classList.add("active");
 		input.focus();
+		input.value = "";
 
 	}
 }
@@ -93,9 +94,11 @@ function activateCard (e) {
 //gets the card with the class active, finds the section in there and assigns inputValue as its innerHTML
 function reWriteCard (event) {
 	let inputValue = input.value;
+	console.log('inputValue:', inputValue);
 	let card = document.querySelector(".active");
 	let bio = card.querySelector("section");
 	bio.innerHTML = inputValue;
+	console.log('inputValue:', inputValue);
 }
 
 
