@@ -1,0 +1,29 @@
+.cards-div {
+	display: flex;
+	justify-content: center;
+}
+article {
+	display: inline-block;
+	margin: 1em;
+	border: 5px solid black;
+	max-width: 25%;
+	text-align: center;
+}
+
+.even {
+	background-color: lightgrey;
+}
+
+.odd {
+	background-color: darkgrey;
+}
+
+.active {
+	border: 5px dotted white;
+}
+
+.pic {
+	max-width: 50%;
+	max-height: 50%;
+
+}
