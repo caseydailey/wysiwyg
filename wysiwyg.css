@@ -10,11 +10,11 @@ article {
 	text-align: center;
 }
 
-.even {
+article:nth-child(even) {
 	background-color: lightgrey;
 }
 
-.odd {
+article:nth-child(odd) {
 	background-color: darkgrey;
 }
 

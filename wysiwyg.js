@@ -73,7 +73,7 @@ let card = "";
 
 //event listener is added to body to find clicks and enter
 body.addEventListener("click", activateCard);
-input.addEventListener("keypress", reWriteCard);
+input.addEventListener("keyup", reWriteCard);
 
 //activatCard checks to see if the click was on a card
 //gets all the cards (in an HTML collection) makes an array and for each item(so we can call forEach on it), 
@@ -93,45 +93,38 @@ function activateCard (e) {
 //any keypress in input fires this handler which gets the value of input
 //gets the card with the class active, finds the section in there and assigns inputValue as its innerHTML
 function reWriteCard (event) {
-	let inputValue = input.value;
-	console.log('inputValue:', inputValue);
-	let card = document.querySelector(".active");
-	let bio = card.querySelector("section");
-	bio.innerHTML = inputValue;
-	console.log('inputValue:', inputValue);
+	if(event.keyCode === 13){
+		deactivate();
+	} else {
+		let inputValue = input.value;
+		let card = document.querySelector(".active");
+		let bio = card.querySelector("section");
+		bio.innerHTML = inputValue;
+	}
+}
+
+function deactivate(){
+	let cardsArray = Array.from(document.getElementsByClassName("card"));
+	cardsArray.forEach((card) => card.classList.remove("active"));
+	input.value = "";
+	input.blur();
 }
 
 
 
 //call forEach on people and sort based on odd or even index, plugging values in a string 
 //and setting it as the innerHTML of the cardDiv
-people.forEach(function(p, i){
+people.forEach(function(person){
 
-	if (i === 0 || i % 2 === 0) {
-
-		card = `<article class= "even card">
-				<h3>${p.name}</h3>
-				<h5>${p.title}</h5>
-				<img src="${p.image}" class="pic">
-				<section>${p.bio}</section> 
-				<footer>Lifespan: ${p.lifespan.birth} to ${p.lifespan.death}</footer>
+		card = `<article class= "card">
+				<h3>${person.name}</h3>
+				<h5>${person.title}</h5>
+				<img src="${person.image}" class="pic">
+				<section>${person.bio}</section> 
+				<footer>Lifespan: ${person.lifespan.birth} to ${person.lifespan.death}</footer>
 				</article>`;
 
 		cardDiv.innerHTML += card;
-
-	} else {
-
-		card = `<article class= "odd card">
-				<h3>${p.name}</h3>
-				<h5>${p.title}</h5>
-				<img src="${p.image}" class="pic">
-				<section>${p.bio}</section> 
-				<footer>Lifespan: ${p.lifespan.birth} to ${p.lifespan.death}</footer>
-				</article>`;
-
-		cardDiv.innerHTML += card;
-	}
-
 });
 
 
