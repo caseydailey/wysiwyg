@@ -90,8 +90,9 @@ function activateCard (e) {
 	}
 }
 
-//any keypress in input fires this handler which gets the value of input
-//gets the card with the class active, finds the section in there and assigns inputValue as its innerHTML
+//any keyup in input fires this handler which gets the value of input
+//gets the card with the class active, 
+//finds the bio section in there and assigns inputValue as its innerHTML
 function reWriteCard (event) {
 	if(event.keyCode === 13){
 		deactivate();
@@ -103,6 +104,7 @@ function reWriteCard (event) {
 	}
 }
 
+// helper to 'deactivate' the card invoked when user hits enter
 function deactivate(){
 	let cardsArray = Array.from(document.getElementsByClassName("card"));
 	cardsArray.forEach((card) => card.classList.remove("active"));
@@ -110,10 +112,7 @@ function deactivate(){
 	input.blur();
 }
 
-
-
-//call forEach on people and sort based on odd or even index, plugging values in a string 
-//and setting it as the innerHTML of the cardDiv
+// puts each person on the dom in a card
 people.forEach(function(person){
 
 		card = `<article class= "card">
