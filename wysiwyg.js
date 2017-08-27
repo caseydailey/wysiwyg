@@ -106,7 +106,7 @@ function reWriteCard (event) {
 
 // helper to 'deactivate' the card invoked when user hits enter
 function deactivate(){
-	let cardsArray = Array.from(document.getElementsByClassName("card"));
+	let cardsArray = [...document.getElementsByClassName("card")];
 	cardsArray.forEach((card) => card.classList.remove("active"));
 	input.value = "";
 	input.blur();
